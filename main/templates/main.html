@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contents%}
+
+<h1>mainpage</h1>
+<p>{{txt}}</p>
+<a href="{% url 'other' %}">go other page</a>
+
+{% for blog in blog.all%}
+<div class="blog_post" style="border-width: 3px; border-style: solid;">
+    <p>{{blog.title}}</p>
+    <p>{{blog.date}}</p>
+    <p>{{blog.summary}}<a href="{% url 'detail' blog.id%}">...더보기</a></p>
+</div>
+
+{% endfor %}
+
+<p>추가적인 내용</p>
+
+</body>
+
+{% endblock %}

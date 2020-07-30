@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block contents %}
+<!--회원가입   아이디, 비밀번호-->
+
+
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    <ul style="list-style:none;">
+        <li>ID : <input type="text" name="user_id"></li>
+        <li>비밀번호 : <input type="password" name="password1"></li>
+        <li>비밀번호 확인 : <input type="password" name="password2"></li>
+        <li>email : <input type="text" name="email"></li>
+        <li>닉네임 : <input type="text" name="nickname"></li>
+        <input type="submit" value="회원가입하기" class="btn btn-dark">
+    </ul>
+</form>
+
+<div>
+    {% if messages %}
+    {% for warning in messages %}
+    {{warning.message}}
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

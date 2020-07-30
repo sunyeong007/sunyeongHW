@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<form action="{% url 'delete' %}">
+<h1>detail page</h1>
+<p>{{blog.title}}</p>
+<p>{{blog.date}}</p>
+<p>{{blog.body}}</p>
+<div>좋아요 수 : {{blog.like_num}}</div>
+
+<a href="{% url 'main'%}">메인으로 넘어가기</a>
+<input type="hidden" id="blogNum" name="blogNum" value="{{blog.id}}">
+<input class="btn btn-dark" type="submit" value="삭제하기">
+
+<!--게시물 상세페이지에서 좋아요/취소 버튼 넣기-->
+<a href="{% url 'blog_like' blog.id %}">
+    {% if blog in user.account.like_blogs.all %}
+        취소
+    {% else %}
+        좋아요
+    {% endif %}
+</a>
+
+
+
+</form>
+
+{% endblock %}

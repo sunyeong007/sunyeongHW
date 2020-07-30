@@ -1,0 +1,15 @@
+<p>other</p>
+<a href="{% url 'main'%}">go main page</a>
+
+<h1>님의 정보</h1>
+
+
+
+
+{% for blog in account.like_blog.all %}
+<div style="border-bottom: 2px solid#111111;">
+    <li>{{blog.title}}</li>
+    <li>{{blog.date}}</li>
+    <li>{{blog.content}}</li>
+</div>
+{% endfor %}
